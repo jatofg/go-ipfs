@@ -32,7 +32,7 @@ require (
 	github.com/ipfs/go-ipfs-blockstore v0.1.4
 	github.com/ipfs/go-ipfs-chunker v0.0.5
 	github.com/ipfs/go-ipfs-cmds v0.6.0
-	github.com/ipfs/go-ipfs-config v0.12.0
+	github.com/ipfs/go-ipfs-config v0.12.1
 	github.com/ipfs/go-ipfs-ds-help v0.1.1
 	github.com/ipfs/go-ipfs-exchange-interface v0.0.1
 	github.com/ipfs/go-ipfs-exchange-offline v0.0.1
@@ -113,5 +113,7 @@ require (
 
 go 1.14
 
-replace github.com/ipfs/go-bitswap => ../../src/go-bitswap
-replace github.com/ipfs/go-ipfs-config => ../../src/go-ipfs-config
+replace (
+	github.com/ipfs/go-bitswap v0.3.3 => github.com/jatofg/go-bitswap v0.2.21-0.20210221183859-ef3cf9daed44 // branch: nobroadcast033
+	github.com/ipfs/go-ipfs-config v0.12.1 => github.com/jatofg/go-ipfs-config v0.12.1-0.20210221180806-13fcb00c01c7 // branch: master
+)
