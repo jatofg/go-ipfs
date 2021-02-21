@@ -114,3 +114,4 @@ require (
 go 1.14
 
 replace github.com/ipfs/go-bitswap => ../../src/go-bitswap
+replace github.com/ipfs/go-ipfs-config => ../../src/go-ipfs-config
