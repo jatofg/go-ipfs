@@ -424,8 +424,8 @@ github.com/jackpal/gateway v1.0.5/go.mod h1:lTpwd4ACLXmpyiCTRtfiNyVnUmqT9RivzCDQ
 github.com/jackpal/go-nat-pmp v1.0.1/go.mod h1:QPH045xvCAeXUZOxsnwmrtiCoxIr9eob+4orBN1SBKc=
 github.com/jackpal/go-nat-pmp v1.0.2 h1:KzKSgb7qkJvOUTqYl9/Hg/me3pWgBmERKrTGD7BdWus=
 github.com/jackpal/go-nat-pmp v1.0.2/go.mod h1:QPH045xvCAeXUZOxsnwmrtiCoxIr9eob+4orBN1SBKc=
-github.com/jatofg/go-bitswap v0.2.21-0.20210221183859-ef3cf9daed44 h1:8g9OqyhKrzx69v7n9eXNHZrhXs5YJb7viLTOqGC98iI=
-github.com/jatofg/go-bitswap v0.2.21-0.20210221183859-ef3cf9daed44/go.mod h1:AyWWfN3moBzQX0banEtfKOfbXb3ZeoOeXnZGNPV9S6w=
+github.com/jatofg/go-bitswap v0.2.21-0.20210304161444-6bf5e5161892 h1:oGKQbGDEnANSQqdlZ8eOfX0PPvMhkjKwIVHiY0mzdTI=
+github.com/jatofg/go-bitswap v0.2.21-0.20210304161444-6bf5e5161892/go.mod h1:AyWWfN3moBzQX0banEtfKOfbXb3ZeoOeXnZGNPV9S6w=
 github.com/jatofg/go-ipfs-config v0.12.1-0.20210304093219-b13b47ce2a07 h1:NyBmwoLOFNaS6CvuQ8naPZNeoEWFydRMmifra9DbAHo=
 github.com/jatofg/go-ipfs-config v0.12.1-0.20210304093219-b13b47ce2a07/go.mod h1:w6ea80jOIiLBlId+L3oW6ql+I3dx90U8eiewhbJ+Hog=
 github.com/jbenet/go-cienv v0.0.0-20150120210510-1bb1476777ec/go.mod h1:rGaEvXB4uRSZMmzKNLoXvTu1sfx+1kv/DojUlPrSZGs=
