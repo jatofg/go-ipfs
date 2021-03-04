@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"github.com/ipfs/go-bitswap"
 	"time"
 
 	blockstore "github.com/ipfs/go-ipfs-blockstore"
@@ -220,7 +221,7 @@ var IPNS = fx.Options(
 )
 
 // Online groups online-only units
-func Online(bcfg *BuildCfg, cfg *config.Config) fx.Option {
+func Online(bcfg *BuildCfg, cfg *config.Config, wiretap bitswap.WireTap) fx.Option {
 
 	// Namesys params
 
@@ -262,7 +263,8 @@ func Online(bcfg *BuildCfg, cfg *config.Config) fx.Option {
 	shouldBitswapProvide := !cfg.Experimental.StrategicProviding
 
 	return fx.Options(
-		fx.Provide(OnlineExchange(shouldBitswapProvide, !cfg.Experimental.DisableWLBroadcast, cfg.Experimental.NoWLBroadcastSubset)),
+		fx.Provide(OnlineExchange(shouldBitswapProvide, !cfg.Experimental.DisableWLBroadcast,
+			cfg.Experimental.NoWLBroadcastSubset, wiretap)),
 		maybeProvide(Graphsync, cfg.Experimental.GraphsyncEnabled),
 		fx.Provide(Namesys(ipnsCacheSize)),
 		fx.Provide(Peering),
@@ -296,15 +298,15 @@ var Core = fx.Options(
 	fx.Provide(Files),
 )
 
-func Networked(bcfg *BuildCfg, cfg *config.Config) fx.Option {
+func Networked(bcfg *BuildCfg, cfg *config.Config, wiretap bitswap.WireTap) fx.Option {
 	if bcfg.Online {
-		return Online(bcfg, cfg)
+		return Online(bcfg, cfg, wiretap)
 	}
 	return Offline(cfg)
 }
 
 // IPFS builds a group of fx Options based on the passed BuildCfg
-func IPFS(ctx context.Context, bcfg *BuildCfg) fx.Option {
+func IPFS(ctx context.Context, bcfg *BuildCfg, wiretap bitswap.WireTap) fx.Option {
 	if bcfg == nil {
 		bcfg = new(BuildCfg)
 	}
@@ -325,7 +327,7 @@ func IPFS(ctx context.Context, bcfg *BuildCfg) fx.Option {
 		Storage(bcfg, cfg),
 		Identity(cfg),
 		IPNS,
-		Networked(bcfg, cfg),
+		Networked(bcfg, cfg, wiretap),
 
 		Core,
 	)

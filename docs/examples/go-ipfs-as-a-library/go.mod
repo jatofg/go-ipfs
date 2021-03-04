@@ -4,7 +4,7 @@ go 1.14
 
 require (
 	github.com/ipfs/go-ipfs v0.7.0
-	github.com/ipfs/go-ipfs-config v0.9.0
+	github.com/ipfs/go-ipfs-config v0.12.1
 	github.com/ipfs/go-ipfs-files v0.0.8
 	github.com/ipfs/interface-go-ipfs-core v0.4.0
 	github.com/libp2p/go-libp2p-core v0.6.0
@@ -12,4 +12,7 @@ require (
 	github.com/multiformats/go-multiaddr v0.2.2
 )
 
-replace github.com/ipfs/go-ipfs => ./../../..
+replace (
+	github.com/ipfs/go-ipfs => ./../../..
+	github.com/ipfs/go-ipfs-config v0.12.1 => github.com/jatofg/go-ipfs-config master // branch: master
+)

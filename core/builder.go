@@ -2,6 +2,7 @@ package core
 
 import (
 	"context"
+	"github.com/ipfs/go-bitswap"
 	"sync"
 	"time"
 
@@ -25,6 +26,10 @@ type BuildCfg = node.BuildCfg // Alias for compatibility until we properly refac
 
 // NewNode constructs and returns an IpfsNode using the given cfg.
 func NewNode(ctx context.Context, cfg *BuildCfg) (*IpfsNode, error) {
+	return NewNodeWithWiretap(ctx, cfg, nil)
+}
+
+func NewNodeWithWiretap(ctx context.Context, cfg *BuildCfg, wiretap bitswap.WireTap) (*IpfsNode, error) {
 	// save this context as the "lifetime" ctx.
 	lctx := ctx
 
@@ -39,7 +44,7 @@ func NewNode(ctx context.Context, cfg *BuildCfg) (*IpfsNode, error) {
 	}
 
 	app := fx.New(
-		node.IPFS(ctx, cfg),
+		node.IPFS(ctx, cfg, wiretap),
 
 		fx.NopLogger,
 		fx.Extract(n),
