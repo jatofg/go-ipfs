@@ -88,12 +88,11 @@ func Dag(bs blockservice.BlockService) format.DAGService {
 }
 
 // OnlineExchange creates new LibP2P backed block exchange (BitSwap)
-func OnlineExchange(provide bool, broadcastWantlists bool, noBroadcastSubset float64, wiretap bitswap.WireTap) interface{} {
+func OnlineExchange(provide bool, broadcastWantlists bool, noBroadcastSubset float64) interface{} {
 	return func(mctx helpers.MetricsCtx, lc fx.Lifecycle, host host.Host, rt routing.Routing, bs blockstore.GCBlockstore) exchange.Interface {
 		bitswapNetwork := network.NewFromIpfsHost(host, rt)
 		exch := bitswap.New(helpers.LifecycleCtx(mctx, lc), bitswapNetwork, bs, bitswap.ProvideEnabled(provide),
-			bitswap.WantlistBroadcastEnabled(broadcastWantlists), bitswap.NoBroadcastSubsetProportion(noBroadcastSubset),
-			bitswap.EnableWireTap(wiretap))
+			bitswap.WantlistBroadcastEnabled(broadcastWantlists), bitswap.NoBroadcastSubsetProportion(noBroadcastSubset))
 		lc.Append(fx.Hook{
 			OnStop: func(ctx context.Context) error {
 				return exch.Close()

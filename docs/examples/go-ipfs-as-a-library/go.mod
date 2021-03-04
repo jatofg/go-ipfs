@@ -13,4 +13,3 @@ require (
 )
 
 replace github.com/ipfs/go-ipfs => ./../../..
-replace github.com/ipfs/go-ipfs-config v0.12.1 => github.com/jatofg/go-ipfs-config v0.12.1-0.20210302112037-26c22e3efc91 // branch: master

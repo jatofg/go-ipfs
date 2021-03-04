@@ -262,8 +262,7 @@ func Online(bcfg *BuildCfg, cfg *config.Config) fx.Option {
 	shouldBitswapProvide := !cfg.Experimental.StrategicProviding
 
 	return fx.Options(
-		fx.Provide(OnlineExchange(shouldBitswapProvide, !cfg.Experimental.DisableWLBroadcast,
-			cfg.Experimental.NoWLBroadcastSubset, cfg.Experimental.BitSwapWiretap)),
+		fx.Provide(OnlineExchange(shouldBitswapProvide, !cfg.Experimental.DisableWLBroadcast, cfg.Experimental.NoWLBroadcastSubset)),
 		maybeProvide(Graphsync, cfg.Experimental.GraphsyncEnabled),
 		fx.Provide(Namesys(ipnsCacheSize)),
 		fx.Provide(Peering),
