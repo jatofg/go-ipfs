@@ -114,6 +114,6 @@ require (
 go 1.14
 
 replace (
-	github.com/ipfs/go-bitswap v0.3.3 => github.com/jatofg/go-bitswap v0.2.21-0.20210304161444-6bf5e5161892 // branch: nobroadcast033
+	github.com/ipfs/go-bitswap v0.3.3 => github.com/jatofg/go-bitswap v0.2.21-0.20210305141746-8b5b4315c5c3 // branch: nobroadcast033
 	github.com/ipfs/go-ipfs-config v0.12.1 => github.com/jatofg/go-ipfs-config v0.12.1-0.20210304093219-b13b47ce2a07 // branch: master
 )
