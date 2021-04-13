@@ -28,15 +28,15 @@ func Transports(tptConfig config.Transports) interface{} {
 	}) (opts Libp2pOpts, err error) {
 		privateNetworkEnabled := pnet.Fprint != nil
 
-		if tptConfig.Network.TCP.WithDefault(true) {
+		if tptConfig.Network.TCP.WithDefault(true) && !tptConfig.Network.Tor.WithDefault(false) {
 			opts.Opts = append(opts.Opts, libp2p.Transport(tcp.NewTCPTransport))
 		}
 
-		if tptConfig.Network.Websocket.WithDefault(true) {
+		if tptConfig.Network.Websocket.WithDefault(true) && !tptConfig.Network.Tor.WithDefault(false) {
 			opts.Opts = append(opts.Opts, libp2p.Transport(websocket.New))
 		}
 
-		if tptConfig.Network.QUIC.WithDefault(!privateNetworkEnabled) {
+		if tptConfig.Network.QUIC.WithDefault(!privateNetworkEnabled) && !tptConfig.Network.Tor.WithDefault(false) {
 			if privateNetworkEnabled {
 				// QUIC was force enabled while the private network was turned on.
 				// Fail and tell the user.
